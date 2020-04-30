@@ -18,6 +18,8 @@ Metrics/BlockLength:
   ExcludedMethods: ["describe"]
   Max: 30
 
+Style/StringLiterals:
+  Enabled: false
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
