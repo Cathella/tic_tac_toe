@@ -1,6 +1,6 @@
-## Tic Tac Toe Implementation In Ruby Language
+# Tic Tac Toe Implementation In Ruby Language
 
-# Milestone 1: Project setup
+## Milestone 1: Project setup
 
 > This project is the first milestone of the tic tac toe project in the Ruby module.
 
