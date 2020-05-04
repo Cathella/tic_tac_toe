@@ -2,11 +2,12 @@ class TicTacToe
   def initialize
     @board = Board.new
     @player = Player.new
-  end
+  end  
 end
 
 class Player
-  def initialize(name = "Anonymous", piece, board)
+
+  def initialize(piece, board, name = "Anonymous")
     @name = name
     @piece = piece
     @board = board
@@ -27,7 +28,7 @@ end
 
 class  Board
   def initialize
-    p @board = Array.new(3){Array.new(3)}       #[ [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
+    @board = Array.new(3){Array.new(3)}       #[ [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
   end 
 
   def render_board
@@ -48,20 +49,22 @@ class  Board
   end
 
   def coordinate_valid?(x_y_coord)
-    within_valid_coord?(x_y_coord) &&  empty_coord?(x_y_coord)
+    within_valid_coord?(x_y_coord) && empty_coord?(x_y_coord)
   end
 
   def within_valid_coord(x_y_coord)
     if (0..2).include?(x_y_coord[0]) && (0..2).include?(x_y_coord[1])
-      return true
+      true
+    else
+      print_user_message("Coordinates out of range!. Try again!")
+      false
     end
-    print_user_message("Coordinates out of range!. Try again!")
-    false
   end
 
-  def empty_coord? (coord)
+  def empty_coord?(coord)
     if @board[coord[0]][coord[1]].nil?
-      return true
+      true
+    else
       print_user_message("Location previously played. Make a new choice.")
       false
     end
@@ -84,7 +87,7 @@ class  Board
 
   def board_filled?
     @board.all? do |row|
-      row.none? { |cell| cell.nil? }
+      row.none?(&:nil?)
     end
   end
 
