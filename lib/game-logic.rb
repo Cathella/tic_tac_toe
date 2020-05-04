@@ -1,4 +1,8 @@
-
+class TicTacToe
+  def initialize
+    
+  end
+end
 
 class  Board
   def initialize
@@ -45,13 +49,31 @@ class  Board
   def rows_array
     @board
   end
+
   def cols_array
-    
+    verticals = []
+    for i in 0...@board.length do
+      verticals << [@board[0][i], @board[1][i], @board[2][i]]
+    end
   end
+
   def diagonals_array
     [[@board[0][0], @board[1][1], @board[2][2]], [@board[0][2], @board[1][1], @board[2][0]]]
   end
-  def winning?
 
+  def board_filled?
+    @board.all? do |row|
+      row.none? { |cell| cell.nil? }
+    end
+  end
+
+  def check_win(winning_arr, piece)
+    winning_arr.any? do |row|
+      row.all? { |cell| cell == piece }
+    end
+  end
+
+  def winning?(piece)
+    check_win(rows_array, piece) || check_win(cols_array, piece) || check_win(diagonals_array, piece)
   end
 end
