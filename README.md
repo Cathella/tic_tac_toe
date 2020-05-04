@@ -2,7 +2,7 @@
 
 ## Milestone 1: Project setup
 
-> This project is the first milestone of the tic tac toe project in the Ruby module.
+> This project is the Milestone 2 of the tic tac toe project in the Ruby module.
 
 > The project's requirements can be found here: [OOP (Object Oriented Programming)](https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/59565018/)
 

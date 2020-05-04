@@ -1,24 +1,23 @@
-#!/usr/bin/env ruby 
+#!/usr/bin/env ruby
 
 def print_user_message(msg)
   print msg
 end
 
-
-class  Board
+class Board
   def initialize
-    @board = Array.new(3){Array.new(3)}       #[ [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
-  end 
+    @board = Array.new(3) { Array.new(3) } # [ [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
+  end
 
   def render_board
     print_user_message("\n")
     @board.each do |row|
-      row.each {|cell| cell.nil? ? print('-') : print_user_message(cell.to_s)}
+      row.each { |cell| cell.nil? ? print('-') : print_user_message(cell.to_s) }
       print_user_message("\n")
     end
-    print_user_message("\n")  #add a newline
+    print_user_message("\n") # add a newline
   end
-  
+
   def add_new_piece(x_y_coord, piece)
     if coordinate_valid?(x_y_coord)
       @board[x_y_coord[0]][x_y_coord[1]] = piece
@@ -51,30 +50,28 @@ class  Board
 end
 
 class Player
-
   def initialize(piece, board, name = "Anonymous")
     @name = name
     @piece = piece
     @board = board
   end
 
-  def get_coordinates
+  def request_coordinates
     puts "#{@name} (#{@piece}), Enter coordinates in form of x,y"
-    while true
-      coordinates = gets.chomp.split(',').map { |ch| ch.to_i }
-      if (coordinates.size != 2)
+    loop do
+      coordinates = gets.chomp.split(',').map(&:to_i)
+      if coordinates.size != 2
         print_user_message("Wrong coordinate format!")
-      else
-        break if @board.add_new_piece(coordinates, @piece)
+      elsif @board.add_new_piece(coordinates, @piece)
+        break
       end
     end
     true
   end
 end
 
-
 board = Board.new
 
 player = Player.new(:x, board)
 
-print_user_message("Now, your move is now displayed on the board") if player.get_coordinates
+print_user_message("Now, your move is now displayed on the board") if player.request_coordinates
