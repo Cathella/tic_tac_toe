@@ -1,6 +1,27 @@
 class TicTacToe
   def initialize
-    
+    @board = Board.new
+    @player = Player.new
+  end
+end
+
+class Player
+  def initialize(name = "Anonymous", piece, board)
+    @name = name
+    @piece = piece
+    @board = board
+  end
+
+  def get_coordinates
+    puts "#{@name} (#{@piece}), Enter coordinates in form of x,y"
+    while true
+      coordinates = gets.chomp.split(',').map { |ch| ch.to_i }
+      if (coordinates.size != 2)
+        print_user_message("Wrong coordinate format!")
+      else
+        break if @board.add_new_piece(coordinates, @piece)
+      end
+    end
   end
 end
 
