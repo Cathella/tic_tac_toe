@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-def print_user_message(msg)
+def print_user_message(msg)   # Handles all user interaction messages
   print msg
 end
 
@@ -12,8 +12,16 @@ class TicTacToe
     @current_player = @player_A
   end
 
+  def get_player_profile
+    @player_A.get_player_name("Player A")
+    @player_A.get_player_symbol(@player_A.name)
+    @player_B.get_player_name("Player B")
+    @player_B.get_player_symbol(@player_B.name)    
+  end
+
   def play_game
     @board.render_board
+    get_player_profile
     loop do
       @current_player.obtain_coordinates
       @board.render_board
@@ -44,6 +52,32 @@ class Player
     @name = name
     @piece = piece
     @board = board
+  end
+
+  def get_player_name(player_n)
+    while true
+      print "#{player_n} enter your name as a text without a space or symbol: "
+      name = gets.chomp
+      if !(name =~ /^[0-9a-zA-Z]+$/).nil?
+        @name = name.capitalize # capitalize the first letter of the name
+        break
+      else
+        puts "Invalid name format, try again!"
+      end  
+    end
+  end
+
+  def get_player_symbol(player_n)
+    while true
+      print "#{player_n} enter your symbol as just one letter: "
+      piece = gets.chomp
+      if !(piece =~ /^[a-zA-Z]$/).nil?
+        @piece = piece.upcase
+        break
+      else
+        puts "Invalid symbol format, try again!"
+      end  
+    end
   end
 
   def obtain_coordinates
