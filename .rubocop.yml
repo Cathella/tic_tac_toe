@@ -51,3 +51,5 @@ Style/HashTransformValues:
   Enabled: false
 Style/StringLiterals:
   Enabled:  false
+Style/IfInsideElse:
+  Enabled: false
