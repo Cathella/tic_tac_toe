@@ -1,22 +1,23 @@
 #!/usr/bin/env ruby
 
-def print_user_message(msg)   # Handles all user interaction messages
+# Handles all user interaction messages
+def print_user_message(msg)
   print msg
 end
 
-class TicTacToe
+class TicTacToeGame
   def initialize
     @board = Board.new
-    @player_A = Player.new(:X, @board, "Player A")
-    @player_B = Player.new(:O, @board, "Player B")
-    @current_player = @player_A
+    @player_a = Player.new(:X, @board, "Player A")
+    @player_b = Player.new(:O, @board, "Player B")
+    @current_player = @player_a
   end
 
   def get_player_profile
-    @player_A.get_player_name("Player A")
-    @player_A.get_player_symbol(@player_A.name)
-    @player_B.get_player_name("Player B")
-    @player_B.get_player_symbol(@player_B.name)    
+    @player_a.get_player_name("Player A")
+    @player_a.get_player_symbol(@player_a.name)
+    @player_b.get_player_name("Player B")
+    @player_b.get_player_symbol(@player_b.name)
   end
 
   def play_game
@@ -26,6 +27,7 @@ class TicTacToe
       @current_player.obtain_coordinates
       @board.render_board
       break if game_over?
+
       switch_players
     end
   end
@@ -35,13 +37,13 @@ class TicTacToe
       puts "Congratulations #{@current_player.name}, you have won!"
     elsif @board.filled?
       puts "Oop! You have drawn!"
-    else return false      
+    else return false
     end
     true
   end
 
   def switch_players
-    @current_player = @current_player == @player_A? @player_B : @player_A
+    @current_player = @current_player == @player_a ? @player_b : @player_a
   end
 end
 
@@ -55,7 +57,7 @@ class Player
   end
 
   def get_player_name(player_n)
-    while true
+    loop do
       print "#{player_n} enter your name as a text without a space or symbol: "
       name = gets.chomp
       if !(name =~ /^[0-9a-zA-Z]+$/).nil?
@@ -63,12 +65,12 @@ class Player
         break
       else
         puts "Invalid name format, try again!"
-      end  
+      end
     end
   end
 
   def get_player_symbol(player_n)
-    while true
+    loop do
       print "#{player_n} enter your symbol as just one letter: "
       piece = gets.chomp
       if !(piece =~ /^[a-zA-Z]$/).nil?
@@ -76,7 +78,7 @@ class Player
         break
       else
         puts "Invalid symbol format, try again!"
-      end  
+      end
     end
   end
 
@@ -170,7 +172,6 @@ class Board
   end
 end
 
-game = TicTacToe.new
+game = TicTacToeGame.new
 
 game.play_game
-

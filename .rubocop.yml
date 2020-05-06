@@ -17,7 +17,8 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   ExcludedMethods: ['describe']
   Max: 30
-
+Naming/AccessorMethodName:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
