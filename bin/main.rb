@@ -14,9 +14,9 @@ class TicTacToeGame
   end
 
   def get_player_profile
-    @player_a.get_player_name("Player A")
+    @player_a.get_player_name(@player_a.name)
     @player_a.get_player_symbol(@player_a.name)
-    @player_b.get_player_name("Player B")
+    @player_b.get_player_name(@player_b.name)
     @player_b.get_player_symbol(@player_b.name)
   end
 
