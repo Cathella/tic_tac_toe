@@ -1,10 +1,8 @@
 class Board
   def initialize
     #@play_board = Array.new(3) { Array.new(3) } # [ [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
-    @play_board = [ ['+', '+', '+'], ['+', '+', '+'], ['+', '+', '+']]
+    @play_board = [ ['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
   end
-
-  # @@display_arr = [["----", "----", "-"], ["----", "----", "-"], ["----", "----", "-"]]
 
   def render
     # print_user_message("\n")
@@ -15,17 +13,17 @@ class Board
     # print_user_message("\n") # add a newline
     puts "    A     B     C   "
     puts " |-----|-----|-----|"
-    puts "1|  #{@play_board[0][0]}  |  #{@play_board[0][1]}  |  #{@play_board[0][2]}  |"
+    puts "1|  #{@play_board[0]}  |  #{@play_board[1]}  |  #{@play_board[2]}  |"
     puts " |-----|-----|-----|"
-    puts "2|  #{@play_board[1][0]}  |  #{@play_board[1][1]}  |  #{@play_board[1][2]}  |"
+    puts "2|  #{@play_board[3]}  |  #{@play_board[4]}  |  #{@play_board[5]}  |"
     puts " |-----|-----|-----|"
-    puts "3|  #{@play_board[2][0]}  |  #{@play_board[2][1]}  |  #{@play_board[2][2]}  |"
+    puts "3|  #{@play_board[6]}  |  #{@play_board[7]}  |  #{@play_board[8]}  |"
     puts " |-----|-----|-----|"
   end
 
   def add_new_piece(x_y_coord, piece)
     if coordinate_valid?(x_y_coord)
-      @play_board[x_y_coord[0]][x_y_coord[1]] = piece
+      @play_board[x_y_coord] = piece
       return true
     end
     false
@@ -36,7 +34,7 @@ class Board
   end
 
   def coord_within_range?(x_y_coord)
-    if (0..2).include?(x_y_coord[0]) && (0..2).include?(x_y_coord[1])
+    if (1..9).include?(x_y_coord)
       true
     else
       print_user_message("Coordinates out of range!. Try again!\n")
@@ -45,7 +43,7 @@ class Board
   end
 
   def coord_empty?(coord)
-    if @play_board[coord[0]][coord[1]] == '-'
+    unless @play_board[coord].is_a?(Symbol)
       true
     else
       print_user_message("Location previously played. Make a new choice.\n")
@@ -54,32 +52,28 @@ class Board
   end
 
   def rows_array
-    @play_board
+    [[@play_board[0], @play_board[1], @play_board[2]],
+     [@play_board[3], @play_board[4], @play_board[5]],
+     [@play_board[6], @play_board[7], @play_board[8]]]
   end
 
   def cols_array
-    verticals = []
-    (0...@play_board.length).each do |i|
-      verticals << [@play_board[0][i], @play_board[1][i], @play_board[2][i]]
-    end
-    verticals
+    [[@play_board[0], @play_board[3], @play_board[6]],
+     [@play_board[1], @play_board[4], @play_board[7]],
+     [@play_board[2], @play_board[5], @play_board[8]]]
   end
 
   def diagonals_array
-    [[@play_board[0][0], @play_board[1][1], @play_board[2][2]],
-     [@play_board[0][2], @play_board[1][1], @play_board[2][0]]]
+    [[@play_board[0], @play_board[4], @play_board[8]],
+     [@play_board[2], @play_board[4], @play_board[6]]]
   end
 
   def filled?
-    @play_board.all? do |row|
-      row.none? {|cell| cell == '-'}
-    end
+    @board.all? { |cell| cell.is_a?(Symbol) }
   end
 
   def check_win(winning_arr, piece)
-    winning_arr.any? do |row|
-      row.all? { |cell| cell == piece }
-    end
+    winning_arr.all? { |cell| cell == piece }
   end
 
   def winning?(piece)
