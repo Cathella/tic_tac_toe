@@ -18,7 +18,7 @@ class TicTacToeGame
     get_player_profile
     loop do
       @current_player.obtain_coordinates
-      @board.render_board
+      @board.render
       break if game_over?
 
       switch_players

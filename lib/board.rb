@@ -1,7 +1,7 @@
 class Board
   def initialize
     #@play_board = Array.new(3) { Array.new(3) } # [ [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
-    @play_board = [ ['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
+    @play_board = [ 1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
   def render
@@ -11,14 +11,13 @@ class Board
     #   print_user_message("\n")
     # end
     # print_user_message("\n") # add a newline
-    puts "    A     B     C   "
-    puts " |-----|-----|-----|"
-    puts "1|  #{@play_board[0]}  |  #{@play_board[1]}  |  #{@play_board[2]}  |"
-    puts " |-----|-----|-----|"
-    puts "2|  #{@play_board[3]}  |  #{@play_board[4]}  |  #{@play_board[5]}  |"
-    puts " |-----|-----|-----|"
-    puts "3|  #{@play_board[6]}  |  #{@play_board[7]}  |  #{@play_board[8]}  |"
-    puts " |-----|-----|-----|"
+    puts "|-----|-----|-----|"
+    puts "|  #{@play_board[0]}  |  #{@play_board[1]}  |  #{@play_board[2]}  |"
+    puts "|-----|-----|-----|"
+    puts "|  #{@play_board[3]}  |  #{@play_board[4]}  |  #{@play_board[5]}  |"
+    puts "|-----|-----|-----|"
+    puts "|  #{@play_board[6]}  |  #{@play_board[7]}  |  #{@play_board[8]}  |"
+    puts "|-----|-----|-----|"
   end
 
   def add_new_piece(x_y_coord, piece)
@@ -69,7 +68,7 @@ class Board
   end
 
   def filled?
-    @board.all? { |cell| cell.is_a?(Symbol) }
+    @play_board.all? { |cell| cell.is_a?(Symbol) }
   end
 
   def check_win(winning_arr, piece)
