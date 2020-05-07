@@ -54,3 +54,5 @@ Style/StringLiterals:
   Enabled:  false
 Style/IfInsideElse:
   Enabled: false
+Style/ClassVars:
+  Enabled: false

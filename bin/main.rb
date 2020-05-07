@@ -96,15 +96,16 @@ class Player
 end
 
 class Board
+  @@play_board = nil
   def initialize
-    @play_board = Array.new(3) { Array.new(3) } # [ [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
+    @@play_board = Array.new(3) { Array.new(3) } # [ [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
   end
 
   # @@display_arr = [["----", "----", "-"], ["----", "----", "-"], ["----", "----", "-"]]
 
   def render_board
     print_user_message("\n")
-    @play_board.each do |row|
+    @@play_board.each do |row|
       row.each { |cell| cell.nil? ? print('-') : print_user_message(cell.to_s) }
       print_user_message("\n")
     end
@@ -113,7 +114,7 @@ class Board
 
   def add_new_piece(x_y_coord, piece)
     if coord_within_range?(x_y_coord)
-      @play_board[x_y_coord[0]][x_y_coord[1]] = piece
+      @@play_board[x_y_coord[0]][x_y_coord[1]] = piece
       return true
     end
     false
@@ -133,7 +134,7 @@ class Board
   end
 
   def coord_empty?(coord)
-    if @play_board[coord[0]][coord[1]].nil?
+    if @@play_board[coord[0]][coord[1]].nil?
       true
     else
       print_user_message("Location previously played. Make a new choice.")
@@ -142,24 +143,24 @@ class Board
   end
 
   def rows_array
-    @play_board
+    @@play_board
   end
 
   def cols_array
     verticals = []
-    (0...@play_board.length).each do |i|
-      verticals << [@play_board[0][i], @play_board[1][i], @play_board[2][i]]
+    (0...@@play_board.length).each do |i|
+      verticals << [@@play_board[0][i], @@play_board[1][i], @@play_board[2][i]]
     end
     verticals
   end
 
   def diagonals_array
-    [[@play_board[0][0], @play_board[1][1], @play_board[2][2]],
-     [@play_board[0][2], @play_board[1][1], @play_board[2][0]]]
+    [[@@play_board[0][0], @@play_board[1][1], @@play_board[2][2]],
+     [@@play_board[0][2], @@play_board[1][1], @@play_board[2][0]]]
   end
 
   def filled?
-    @play_board.all? do |row|
+    @@play_board.all? do |row|
       row.none?(&:nil?)
     end
   end
