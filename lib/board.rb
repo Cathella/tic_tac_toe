@@ -1,16 +1,11 @@
 class Board
   def initialize
-    #@play_board = Array.new(3) { Array.new(3) } # [ [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
-    @play_board = [ 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    # @play_board = Array.new(3) { Array.new(3) } # [ [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
+    @play_board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
   def render
-    # print_user_message("\n")
-    # @play_board.each do |row|
-    #   row.each { |cell| cell.nil? ? print('-') : print_user_message(cell.to_s) }
-    #   print_user_message("\n")
-    # end
-    # print_user_message("\n") # add a newline
+    print_user_message("\n") # add a newline
     puts "|-----|-----|-----|"
     puts "|  #{@play_board[0]}  |  #{@play_board[1]}  |  #{@play_board[2]}  |"
     puts "|-----|-----|-----|"
@@ -22,7 +17,7 @@ class Board
 
   def add_new_piece(x_y_coord, piece)
     if coordinate_valid?(x_y_coord)
-      @play_board[x_y_coord] = piece
+      @play_board[x_y_coord - 1] = piece
       return true
     end
     false
@@ -42,11 +37,11 @@ class Board
   end
 
   def coord_empty?(coord)
-    unless @play_board[coord].is_a?(Symbol)
-      true
-    else
+    if @play_board[coord].is_a?(Symbol)
       print_user_message("Location previously played. Make a new choice.\n")
       false
+    else
+      true
     end
   end
 

@@ -7,8 +7,6 @@ def print_user_message(msg)
   print msg
 end
 
-
-
 game = TicTacToeGame.new
 
 game.play_game

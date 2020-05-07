@@ -41,9 +41,7 @@ class Player
       if coordinates.size != 1
         print_user_message("Wrong input format!")
       else
-        if (coordinates[0] =~ /^[1-9]$/)
-          coordinates[0] = coordinates[0].to_i - 1
-        end
+        coordinates[0] = coordinates[0].to_i if coordinates[0] =~ /^[1-9]$/
         break if @board.add_new_piece(coordinates[0], @piece)
       end
     end
