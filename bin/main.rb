@@ -154,7 +154,8 @@ class Board
   end
 
   def diagonals_array
-    [[@play_board[0][0], @play_board[1][1], @play_board[2][2]], [@play_board[0][2], @play_board[1][1], @play_board[2][0]]]
+    [[@play_board[0][0], @play_board[1][1], @play_board[2][2]],
+     [@play_board[0][2], @play_board[1][1], @play_board[2][0]]]
   end
 
   def filled?
