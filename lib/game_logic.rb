@@ -14,7 +14,7 @@ class TicTacToeGame
   end
 
   def play_game
-    @board.render_board
+    @board.render
     get_player_profile
     loop do
       @current_player.obtain_coordinates
