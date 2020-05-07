@@ -29,7 +29,7 @@ class TicTacToeGame
     if @board.winning?(@current_player.piece)
       puts "Congratulations #{@current_player.name}, you have won!"
     elsif @board.filled?
-      puts "Oop! You have drawn!"
+      puts "Oops! You've drawn!\n"
     else return false
     end
     true

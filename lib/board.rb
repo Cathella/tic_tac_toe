@@ -1,11 +1,11 @@
 class Board
   def initialize
-    # @play_board = Array.new(3) { Array.new(3) } # [ [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
+    # @play_board = [ [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
     @play_board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
   def render
-    print_user_message("\n") # add a newline
+    puts # add a newline
     puts "|-----|-----|-----|"
     puts "|  #{@play_board[0]}  |  #{@play_board[1]}  |  #{@play_board[2]}  |"
     puts "|-----|-----|-----|"
@@ -13,6 +13,7 @@ class Board
     puts "|-----|-----|-----|"
     puts "|  #{@play_board[6]}  |  #{@play_board[7]}  |  #{@play_board[8]}  |"
     puts "|-----|-----|-----|"
+    puts
   end
 
   def add_new_piece(x_y_coord, piece)
