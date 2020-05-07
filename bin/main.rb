@@ -127,7 +127,7 @@ class Board
     if (0..2).include?(x_y_coord[0]) && (0..2).include?(x_y_coord[1])
       true
     else
-      print_user_message("Coordinates out of range!. Try again!")
+      print_user_message("Coordinates out of range!. Try again!\n")
       false
     end
   end
