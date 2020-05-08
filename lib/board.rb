@@ -1,70 +1,28 @@
 class Board
+  attr_accessor :display
   def initialize
-    # @play_board = [ [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
-    @play_board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  end
-
-  def render
-    puts # add a newline
-    puts "|-----|-----|-----|"
-    puts "|  #{@play_board[0]}  |  #{@play_board[1]}  |  #{@play_board[2]}  |"
-    puts "|-----|-----|-----|"
-    puts "|  #{@play_board[3]}  |  #{@play_board[4]}  |  #{@play_board[5]}  |"
-    puts "|-----|-----|-----|"
-    puts "|  #{@play_board[6]}  |  #{@play_board[7]}  |  #{@play_board[8]}  |"
-    puts "|-----|-----|-----|"
-    puts
-  end
-
-  def add_new_piece(x_y_coord, piece)
-    if coordinate_valid?(x_y_coord)
-      @play_board[x_y_coord - 1] = piece
-      return true
-    end
-    false
-  end
-
-  def coordinate_valid?(x_y_coord)
-    coord_within_range?(x_y_coord) && coord_empty?(x_y_coord)
-  end
-
-  def coord_within_range?(x_y_coord)
-    if (1..9).include?(x_y_coord)
-      true
-    else
-      print_user_message("Coordinates out of range!. Try again!\n")
-      false
-    end
-  end
-
-  def coord_empty?(coord)
-    if @play_board[coord].is_a?(Symbol)
-      print_user_message("Location previously played. Make a new choice.\n")
-      false
-    else
-      true
-    end
+    @display = (1..9).to_a
   end
 
   def rows_array
-    [[@play_board[0], @play_board[1], @play_board[2]],
-     [@play_board[3], @play_board[4], @play_board[5]],
-     [@play_board[6], @play_board[7], @play_board[8]]]
+    [[@display[0], @display[1], @display[2]],
+     [@display[3], @display[4], @display[5]],
+     [@display[6], @display[7], @display[8]]]
   end
 
   def cols_array
-    [[@play_board[0], @play_board[3], @play_board[6]],
-     [@play_board[1], @play_board[4], @play_board[7]],
-     [@play_board[2], @play_board[5], @play_board[8]]]
+    [[@display[0], @display[3], @display[6]],
+     [@display[1], @display[4], @display[7]],
+     [@display[2], @display[5], @display[8]]]
   end
 
   def diagonals_array
-    [[@play_board[0], @play_board[4], @play_board[8]],
-     [@play_board[2], @play_board[4], @play_board[6]]]
+    [[@display[0], @display[4], @display[8]],
+     [@display[2], @display[4], @display[6]]]
   end
 
   def filled?
-    @play_board.all? { |cell| cell.is_a?(Symbol) }
+    @display.all? { |cell| cell.is_a?(Symbol) }
   end
 
   def check_win(winning_arr, piece)
@@ -72,6 +30,11 @@ class Board
   end
 
   def winning?(piece)
+    p "rows_array: #{rows_array}"
     check_win(rows_array, piece) || check_win(cols_array, piece) || check_win(diagonals_array, piece)
+  end
+  
+  def update_board(x_y_coord, piece)
+    @display[x_y_coord - 1] = piece
   end
 end
