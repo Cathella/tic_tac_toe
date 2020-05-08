@@ -41,10 +41,10 @@ def get_player_symbol(player_name)
   loop do
     print "#{player_name} enter your symbol as just one letter: "
     piece = gets.chomp
-    if !(piece =~ /^[a-zA-Z]$/).nil?
-      return @piece = piece.upcase
+    if (piece =~ /[a-zA-Z]/).nil? || ($game.player_a.piece == piece.upcase || $game.player_b.piece == piece.upcase)
+      puts "Invalid symbol format, or symbol already exists. Try again!"      
     else
-      puts "Invalid symbol format, try again!"
+      return @piece = piece.upcase
     end
   end
 end
@@ -70,7 +70,6 @@ end
 def obtain_coordinates
   puts "#{$game.current_player.name} (#{$game.current_player.piece}), Make a selection between 1 and 9"
   loop do
-    # coordinates = gets.chomp.split(',').map(&:to_i)
     coordinates = gets.chomp.split('')
     if coordinates.size != 1
       print_user_message("Wrong input format!")
@@ -86,20 +85,16 @@ get_player_profile
 loop do
   $game.board.update_board(obtain_coordinates, $game.current_player.piece)
   render
-  if $game.game_over?
+  case $game.game_over?
+  when "win"
     puts "Congratulations #{$game.current_player.name}, you have won!"
     break
-  end
-  # case $game.game_over?
-  # when "win"
-  #   puts "Congratulations #{$game.current_player.name}, you have won!"
-  #   break
-  # when "draw"
-  #   puts "Oops! You've drawn!\n"
-  #   break
-  # else
+  when "draw"
+    puts "Oops! You've drawn!\n"
+    break
+  else
     $game.switch_players
-  # end
+  end
 end
 
 

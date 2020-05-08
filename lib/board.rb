@@ -22,15 +22,16 @@ class Board
   end
 
   def filled?
-    @display.all? { |cell| cell.is_a?(String) }
+      @display.all? { |cell| cell.is_a?(String) }
   end
 
   def check_win(winning_arr, piece)
-    winning_arr.all? { |cell| cell == piece }
+    winning_arr.any? do |row|
+      row.all? { |cell| cell == piece }
+    end
   end
 
   def winning?(piece)
-    p rows_array
     check_win(rows_array, piece) || check_win(cols_array, piece) || check_win(diagonals_array, piece)
   end
   
