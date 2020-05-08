@@ -4,16 +4,16 @@ require_relative "../lib/player.rb"
 require_relative "../lib/game_logic.rb"
 
 $game = TicTacToeGame.new
-$board = Board.new
+# $game.board = Board.new
 
 def render
   puts # add a newline
   puts "|-----|-----|-----|"
-  puts "|  #{$board.display[0]}  |  #{$board.display[1]}  |  #{$board.display[2]}  |"
+  puts "|  #{$game.board.display[0]}  |  #{$game.board.display[1]}  |  #{$game.board.display[2]}  |"
   puts "|-----|-----|-----|"
-  puts "|  #{$board.display[3]}  |  #{$board.display[4]}  |  #{$board.display[5]}  |"
+  puts "|  #{$game.board.display[3]}  |  #{$game.board.display[4]}  |  #{$game.board.display[5]}  |"
   puts "|-----|-----|-----|"
-  puts "|  #{$board.display[6]}  |  #{$board.display[7]}  |  #{$board.display[8]}  |"
+  puts "|  #{$game.board.display[6]}  |  #{$game.board.display[7]}  |  #{$game.board.display[8]}  |"
   puts "|-----|-----|-----|"
   puts
 end
@@ -59,7 +59,7 @@ def coord_within_range?(x_y_coord)
 end
 
 def coord_empty?(coord)
-  if $board.display[coord].is_a?(Symbol)
+  if $game.board.display[coord].is_a?(Symbol)
     print_user_message("Location previously played. Make a new choice.\n")
     false
   else
@@ -84,18 +84,22 @@ end
 render
 get_player_profile
 loop do
-  $board.update_board(obtain_coordinates, $game.current_player.piece)
+  $game.board.update_board(obtain_coordinates, $game.current_player.piece)
   render
-  case $game.game_over?
-  when "win"
+  if $game.game_over?
     puts "Congratulations #{$game.current_player.name}, you have won!"
     break
-  when "draw"
-    puts "Oops! You've drawn!\n"
-    break
-  else
-    $game.switch_players
   end
+  # case $game.game_over?
+  # when "win"
+  #   puts "Congratulations #{$game.current_player.name}, you have won!"
+  #   break
+  # when "draw"
+  #   puts "Oops! You've drawn!\n"
+  #   break
+  # else
+    $game.switch_players
+  # end
 end
 
 
