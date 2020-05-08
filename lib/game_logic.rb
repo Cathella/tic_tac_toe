@@ -10,9 +10,9 @@ class TicTacToeGame
   end
 
   def game_over?
-    if @board.winning?(@current_player.piece)
-      return "win"
-    elsif @board.filled?
+    if $board.winning?(@current_player.piece)
+      return true
+    elsif $board.filled?
       return "draw"
     end
     false
