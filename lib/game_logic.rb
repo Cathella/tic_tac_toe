@@ -1,5 +1,4 @@
 class TicTacToeGame
-
   attr_accessor :board, :player_a, :player_b, :current_player
 
   def initialize
@@ -10,14 +9,12 @@ class TicTacToeGame
   end
 
   def game_over?
-    if @board.winning?(@current_player.piece)
-      return "win"
-    elsif @board.filled?
-      return "draw"
-    end
+    return "win" if @board.winning? @current_player.piece
+    return "draw" if @board.filled?
+
     false
   end
-  
+
   def switch_players
     @current_player = @current_player == @player_a ? @player_b : @player_a
   end

@@ -22,7 +22,7 @@ class Board
   end
 
   def filled?
-      @display.all? { |cell| cell.is_a?(String) }
+    @display.all? { |cell| cell.is_a?(String) }
   end
 
   def check_win(winning_arr, piece)
@@ -34,7 +34,7 @@ class Board
   def winning?(piece)
     check_win(rows_array, piece) || check_win(cols_array, piece) || check_win(diagonals_array, piece)
   end
-  
+
   def update_board(x_y_coord, piece)
     @display[x_y_coord - 1] = piece
   end
