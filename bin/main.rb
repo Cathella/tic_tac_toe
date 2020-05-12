@@ -4,48 +4,48 @@ require_relative "../lib/player.rb"
 require_relative "../lib/game_logic.rb"
 require 'colorize'
 
-$game = TicTacToeGame.new
-# $game.board = Board.new
-
-def render
+def render(display)
   puts # add a newline
   puts "|-----|-----|-----|"
-  puts "|  #{$game.board.display[0]}  |  #{$game.board.display[1]}  |  #{$game.board.display[2]}  |"
+  puts "|  #{display[0]}  |  #{display[1]}  |  #{display[2]}  |"
   puts "|-----|-----|-----|"
-  puts "|  #{$game.board.display[3]}  |  #{$game.board.display[4]}  |  #{$game.board.display[5]}  |"
+  puts "|  #{display[3]}  |  #{display[4]}  |  #{display[5]}  |"
   puts "|-----|-----|-----|"
-  puts "|  #{$game.board.display[6]}  |  #{$game.board.display[7]}  |  #{$game.board.display[8]}  |"
+  puts "|  #{display[6]}  |  #{display[7]}  |  #{display[8]}  |"
   puts "|-----|-----|-----|"
   puts
 end
 
-def get_player_profile
-  $game.player_a.name = get_player_name($game.player_a.name)
-  $game.player_a.piece = get_player_symbol($game.player_a.name)
-  $game.player_b.name = get_player_name($game.player_b.name)
-  $game.player_b.piece = get_player_symbol($game.player_b.name)
+def get_player_profile(game)
+  get_player_name(game)
+  get_player_symbol(game)
+  game.switch_players
+  get_player_name(game)
+  get_player_symbol(game)
 end
 
-def get_player_name(player_name)
+def get_player_name(game)
   loop do
-    print "#{player_name} enter your name as a text without a space or symbol: "
+    print "#{game.current_player.name} enter your name as a text without a space or symbol: "
     name = gets.chomp
     if !(name =~ /^[0-9a-zA-Z]{1,10}$/).nil?  #/^[0-9a-zA-Z]+$/    
-      return name.capitalize # capitalize the first letter of the name
+      game.current_player.name = name.capitalize # capitalize the first letter of the name
+      return
     else
       puts "Invalid name format, try again!"
     end
   end
 end
 
-def get_player_symbol(player_name)
+def get_player_symbol(game)
   loop do
-    print "#{player_name} enter your symbol as just one letter: "
+    print "#{game.current_player.name} enter your symbol as just one letter: "
     piece = gets.chomp
-    if (piece =~ /^[a-zA-Z]$/).nil? || ($game.player_a.piece == piece.upcase || $game.player_b.piece == piece.upcase)
+    if (piece =~ /^[a-zA-Z]$/).nil? || (game.player_a.piece == piece.upcase || game.player_b.piece == piece.upcase)
       puts "Invalid symbol format, or symbol already exists. Try again!"      
     else
-      return @piece = piece.upcase
+      game.current_player.piece = piece.upcase
+      return
     end
   end
 end
@@ -68,8 +68,8 @@ def coord_empty?(coord)
   end
 end
 
-def obtain_coordinates
-  puts "#{$game.current_player.name} (#{$game.current_player.piece}), Make a selection between 1 and 9"
+def obtain_coordinates(current_player)
+  puts "#{current_player.name} (#{current_player.piece}), Make a selection between 1 and 9"
   loop do
     coordinates = gets.chomp.split('')
     if coordinates.size != 1
@@ -81,11 +81,15 @@ def obtain_coordinates
   end
 end
 
-render
-get_player_profile
+# $gamePlay the game here
+
+$game = TicTacToeGame.new
+render($game.board.display)
+
+get_player_profile($game)
 loop do
-  $game.board.update_board(obtain_coordinates, $game.current_player.piece)
-  render
+  $game.board.update_board(obtain_coordinates($game.current_player), $game.current_player.piece)
+  render($game.board.display)
   case $game.game_over?
   when "win"
     puts "Congratulations #{$game.current_player.name}, you have won!"
