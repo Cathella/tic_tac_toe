@@ -97,9 +97,3 @@ loop do
     $game.switch_players
   end
 end
-
-
-
-
-
-
