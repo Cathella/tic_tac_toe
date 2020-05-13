@@ -56,13 +56,14 @@ def obtain_coordinates(game)
   loop do
     coordinates = gets.chomp.split('')
     if coordinates.size != 1
-      print_user_message("Wrong input format!")
+      puts("Wrong input format!")
     else
       coordinates[0] = coordinates[0].to_i if coordinates[0] =~ /^[1-9]$/
-      if game.validate_coordinate(coordinates[0]) == TicTacToeGame::NOT_VALID 
-        print_user_message("Coordinates out of range!. Try again!\n")
-      elsif game.validate_coordinate(coordinates[0]) == TicTacToeGame::NOT_EMPTY
-        print_user_message("Location previously played. Make a new choice.\n")
+      status = game.validate_coordinate(coordinates[0])
+      if status == TicTacToeGame::NOT_VALID 
+        puts("Coordinates out of range!. Try again!\n")
+      elsif status == TicTacToeGame::NOT_EMPTY
+        puts("Location previously played. Make a new choice.\n")
       else
         return coordinates[0]
       end

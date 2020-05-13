@@ -38,4 +38,8 @@ class Board
   def update_board(x_y_coord, piece)
     @display[x_y_coord - 1] = piece
   end
+
+  def is_empty?(cell)
+    !@display[cell - 1].is_a?(Symbol)
+  end
 end
