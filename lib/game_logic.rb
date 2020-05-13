@@ -1,5 +1,7 @@
 class TicTacToeGame
   attr_accessor :board, :player_a, :player_b, :current_player
+  NOT_VALID = 1
+  NOT_EMPTY = 2
 
   def initialize
     @board = Board.new
@@ -13,6 +15,15 @@ class TicTacToeGame
     return "draw" if @board.filled?
 
     false
+  end
+
+  def validate_coordinate(coord)
+    if !(1..9).include?(coord)
+      return NOT_VALID
+    elsif @board.display[coord].is_a?(Symbol)
+      return NOT_EMPTY
+    end
+    true
   end
 
   def switch_players
