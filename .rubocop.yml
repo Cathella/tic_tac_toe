@@ -15,11 +15,11 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
-  ExcludedMethods: ["describe"]
+  ExcludedMethods: ['describe']
   Max: 30
-
-Style/StringLiterals:
+Naming/AccessorMethodName:
   Enabled: false
+
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
@@ -49,4 +49,8 @@ Style/HashEachMethods:
 Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
+  Enabled: false
+Style/StringLiterals:
+  Enabled:  false
+Style/IfInsideElse:
   Enabled: false
