@@ -35,7 +35,7 @@ class Board
     check_win(rows_array, piece) || check_win(cols_array, piece) || check_win(diagonals_array, piece)
   end
 
-  def is_empty?(cell)
+  def empty?(cell)
     !@display[cell - 1].is_a?(String)
   end
 end

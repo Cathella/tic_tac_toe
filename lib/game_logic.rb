@@ -11,11 +11,10 @@ class TicTacToeGame
   end
 
   def validate_coordinate(cell)
-    if !(1..9).include?(cell)
-      return NOT_VALID
-    elsif !@board.is_empty?(cell)
-      return NOT_EMPTY
-    end
+    return NOT_VALID unless (1..9).include?(cell)
+
+    return NOT_EMPTY unless @board.empty?(cell)
+
     true
   end
 

@@ -5,7 +5,7 @@ require_relative "../lib/game_logic.rb"
 require 'colorize'
 
 def render(display)
-  puts 
+  puts
   puts "|-----|-----|-----|"
   puts "|  #{display[0]}  |  #{display[1]}  |  #{display[2]}  |"
   puts "|-----|-----|-----|"
@@ -30,7 +30,7 @@ def get_player_name(game)
     print "#{game.current_player.name} enter your name as a text without a space or symbol: "
     name = gets.chomp
     if !(name =~ /^[0-9a-zA-Z]{1,10}$/).nil?
-      game.current_player.name = name.capitalize 
+      game.current_player.name = name.capitalize
       return
     else
       puts "Invalid name format, try again!"
@@ -60,7 +60,7 @@ def obtain_coordinates(game)
     else
       coordinates[0] = coordinates[0].to_i if coordinates[0] =~ /^[1-9]$/
       status = game.validate_coordinate(coordinates[0])
-      if status == TicTacToeGame::NOT_VALID 
+      if status == TicTacToeGame::NOT_VALID
         puts("Coordinates out of range!. Try again!\n")
       elsif status == TicTacToeGame::NOT_EMPTY
         puts("Location previously played. Make a new choice.\n")
