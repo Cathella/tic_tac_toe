@@ -5,7 +5,7 @@ require_relative "../lib/game_logic.rb"
 require 'colorize'
 
 def render(display)
-  puts # add a newline
+  puts 
   puts "|-----|-----|-----|"
   puts "|  #{display[0]}  |  #{display[1]}  |  #{display[2]}  |"
   puts "|-----|-----|-----|"
@@ -29,8 +29,8 @@ def get_player_name(game)
   loop do
     print "#{game.current_player.name} enter your name as a text without a space or symbol: "
     name = gets.chomp
-    if !(name =~ /^[0-9a-zA-Z]{1,10}$/).nil? # /^[0-9a-zA-Z]+$/
-      game.current_player.name = name.capitalize # capitalize the first letter of the name
+    if !(name =~ /^[0-9a-zA-Z]{1,10}$/).nil?
+      game.current_player.name = name.capitalize 
       return
     else
       puts "Invalid name format, try again!"
@@ -80,7 +80,7 @@ render(game.board.display)
 
 get_player_profile(game)
 loop do
-  game.board.update_board(obtain_coordinates(game), game.current_player.piece)
+  game.move(obtain_coordinates(game))
   render(game.board.display)
   case game.game_over?
   when "win"

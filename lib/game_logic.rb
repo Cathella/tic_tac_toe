@@ -10,13 +10,6 @@ class TicTacToeGame
     @current_player = @player_a
   end
 
-  def game_over?
-    return "win" if @board.winning? @current_player.piece
-    return "draw" if @board.filled?
-
-    false
-  end
-
   def validate_coordinate(cell)
     if !(1..9).include?(cell)
       return NOT_VALID
@@ -24,6 +17,17 @@ class TicTacToeGame
       return NOT_EMPTY
     end
     true
+  end
+
+  def move(x_y_coord)
+    @board.display[x_y_coord - 1] = @current_player.piece
+  end
+
+  def game_over?
+    return "win" if @board.winning? @current_player.piece
+    return "draw" if @board.filled?
+
+    false
   end
 
   def switch_players

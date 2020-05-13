@@ -35,11 +35,7 @@ class Board
     check_win(rows_array, piece) || check_win(cols_array, piece) || check_win(diagonals_array, piece)
   end
 
-  def update_board(x_y_coord, piece)
-    @display[x_y_coord - 1] = piece
-  end
-
   def is_empty?(cell)
-    !@display[cell - 1].is_a?(Symbol)
+    !@display[cell - 1].is_a?(String)
   end
 end
