@@ -51,24 +51,6 @@ def get_player_symbol(game)
   end
 end
 
-def coord_within_range?(x_y_coord)
-  if (1..9).include?(x_y_coord)
-    true
-  else
-    print_user_message("Coordinates out of range!. Try again!\n")
-    false
-  end
-end
-
-def coord_empty?(game, coord)
-  if game.board.display[coord].is_a?(Symbol)
-    print_user_message("Location previously played. Make a new choice.\n")
-    false
-  else
-    true
-  end
-end
-
 def obtain_coordinates(game)
   puts "#{game.current_player.name} (#{game.current_player.piece}), Make a selection between 1 and 9"
   loop do
@@ -77,7 +59,13 @@ def obtain_coordinates(game)
       print_user_message("Wrong input format!")
     else
       coordinates[0] = coordinates[0].to_i if coordinates[0] =~ /^[1-9]$/
-      return coordinates[0] if coord_within_range?(coordinates[0]) && coord_empty?(game, coordinates[0])
+      if game.validate_coordinate(coordinates[0]) == TicTacToeGame::NOT_VALID 
+        print_user_message("Coordinates out of range!. Try again!\n")
+      elsif game.validate_coordinate(coordinates[0]) == TicTacToeGame::NOT_EMPTY
+        print_user_message("Location previously played. Make a new choice.\n")
+      else
+        return coordinates[0]
+      end
     end
   end
 end
