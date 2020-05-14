@@ -1,7 +1,7 @@
 class TicTacToeGame
   attr_accessor :current_player
   attr_reader :board, :player_a, :player_b
-  
+
   NOT_VALID = 1
   NOT_EMPTY = 2
 
