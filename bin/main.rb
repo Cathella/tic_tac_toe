@@ -4,14 +4,14 @@ require_relative "../lib/player.rb"
 require_relative "../lib/game_logic.rb"
 require 'colorize'
 
-def render(display)
+def render(b)
   puts
   puts "|-----|-----|-----|"
-  puts "|  #{display[0]}  |  #{display[1]}  |  #{display[2]}  |"
+  puts "|  #{b[0]}  |  #{b[1]}  |  #{b[2]}  |"
   puts "|-----|-----|-----|"
-  puts "|  #{display[3]}  |  #{display[4]}  |  #{display[5]}  |"
+  puts "|  #{b[3]}  |  #{b[4]}  |  #{b[5]}  |"
   puts "|-----|-----|-----|"
-  puts "|  #{display[6]}  |  #{display[7]}  |  #{display[8]}  |"
+  puts "|  #{b[6]}  |  #{b[7]}  |  #{b[8]}  |"
   puts "|-----|-----|-----|"
   puts
 end
