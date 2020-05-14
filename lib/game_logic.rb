@@ -1,6 +1,7 @@
 class TicTacToeGame
   attr_accessor :current_player
   attr_reader :board, :player_a, :player_b
+  
   NOT_VALID = 1
   NOT_EMPTY = 2
 
@@ -24,7 +25,7 @@ class TicTacToeGame
   end
 
   def game_over?
-    return "win" if @board.winning?(@current_player.piece)
+    return "win" if @board.win?(@current_player.piece)
     return "draw" if @board.filled?
 
     false
