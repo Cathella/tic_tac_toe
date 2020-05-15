@@ -1,4 +1,7 @@
-# Tic Tac Toe Implementation In Ruby Language
+# TicTacToe Implementation in Ruby
+
+## About the Project
+This project contains two folders the bin and the lib. 
 
 ## Milestone 1: Project setup
 
