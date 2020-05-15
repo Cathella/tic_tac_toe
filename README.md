@@ -8,6 +8,18 @@ This project is a commandline implementation of the famous TicTacToe game in Rub
 - The bin folder contains the main.rb which is the heart of the project
 - The lib folder has 3 files: - the board.rb that contains the Board class where methods related to the board are all defined, the player.rb which initialises a new player and a piece to play with, and the game_logic.rb where all the logic behind the game is defined including validating the player's input, moving board pieces into selected cells, switching player after the other has played, checking if the game is over and so much more.
 
+## Game Rules
+- This game requires 2 players.
+- It has a board with a grid of 3X3 having 9 cells.
+- To play the game, run main.rb file.
+- It will display a fresh board marked with numbers 1 - 9.
+- It prompts the first player for a name and a piece to play with.
+- Same goes for the second player. We customize your piece for any letter a player may prefer.
+- Play the game.
+- The winner is the first player who succeeds in playing their piece in a horizontal, vertical or diagonal row all aligned.
+- The game will draw if no winning combination is found.
+- You can replay the game by running main.rb in the lib folder.
+
 ## Milestone 1: Project setup
 
 > This project is the Milestone 3 of the tic tac toe project in the Ruby module.
