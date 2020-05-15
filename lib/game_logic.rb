@@ -1,5 +1,9 @@
 class TicTacToeGame
-  attr_accessor :board, :player_a, :player_b, :current_player
+  attr_accessor :current_player
+  attr_reader :board, :player_a, :player_b
+
+  NOT_VALID = 1
+  NOT_EMPTY = 2
 
   def initialize
     @board = Board.new
@@ -8,8 +12,20 @@ class TicTacToeGame
     @current_player = @player_a
   end
 
+  def validate_coordinate(cell)
+    return NOT_VALID unless (1..9).include?(cell)
+
+    return NOT_EMPTY unless @board.empty?(cell)
+
+    true
+  end
+
+  def move(x_y_coord)
+    @board.display[x_y_coord - 1] = @current_player.piece
+  end
+
   def game_over?
-    return "win" if @board.winning? @current_player.piece
+    return "win" if @board.win?(@current_player.piece)
     return "draw" if @board.filled?
 
     false
