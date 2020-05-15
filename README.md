@@ -1,7 +1,9 @@
 # TicTacToe Implementation in Ruby
 
 ## About the Project
-This project is a commandline implementation of the famous TicTacToe game in Ruby
+This project is a commandline implementation of the famous TicTacToe game in Ruby.
+
+> The project's requirements can be found here: [OOP (Object Oriented Programming)](https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/59565018/)
 
 ### Project Structure
 - It has two folders bin and lib
@@ -20,21 +22,20 @@ This project is a commandline implementation of the famous TicTacToe game in Rub
 - The game will draw if no winning combination is found.
 - You can replay the game by running main.rb in the lib folder.
 
-## Milestone 1: Project setup
-
-> This project is the Milestone 3 of the tic tac toe project in the Ruby module.
-
-> The project's requirements can be found here: [OOP (Object Oriented Programming)](https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/59565018/)
-
 ## Project Screenshots here:
+![screenshot](capture.png)
 
-## Built With
+### Built With
+Technologies used during development of this project
+- Ruby: as the main programming language
+- VScode: as the editor
 
-- Ruby
+## Development
+To contribute to the game development clone or fork this project.
 
 ## Authors
 
-**Nakitto Catherine**
+👤 **Nakitto Catherine**
 
 - Github: [@Cathella](https://github.com/Cathella)
 - Twitter: [@cathella9](https://twitter.com/cathella9)
