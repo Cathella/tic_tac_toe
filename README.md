@@ -1,7 +1,12 @@
 # TicTacToe Implementation in Ruby
 
 ## About the Project
-This project contains two folders the bin and the lib. 
+This project is a commandline implementation of the famous TicTacToe game in Ruby
+
+### Project Structure
+- It has two folders bin and lib
+- The bin folder contains the main.rb which is the heart of the project
+- The lib folder has 3 files: - the board.rb that contains the Board class where methods related to the board are all defined, the player.rb which initialises a new player and a piece to play with, and the game_logic.rb where all the logic behind the game is defined including validating the player's input, moving board pieces into selected cells, switching player after the other has played, checking if the game is over and so much more.
 
 ## Milestone 1: Project setup
 
