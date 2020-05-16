@@ -7,31 +7,31 @@ This project is a commandline implementation of the famous TicTacToe game in Rub
 
 ### Project Structure
 - It has two folders bin and lib
-- The bin folder contains the main.rb which is the heart of the project
-- The lib folder has 3 files: - the board.rb that contains the Board class where methods related to the board are all defined, the player.rb which initialises a new player and a piece to play with, and the game_logic.rb where all the logic behind the game is defined including validating the player's input, moving board pieces into selected cells, switching player after the other has played, checking if the game is over and so much more.
+- The bin folder contains the main.rb which is the heart of the project, i.e., where the game runs from.
+- The lib folder has 3 files: - the board.rb that contains the Board class where methods related to the board are all defined, the player.rb which initialises a new player object with player name and a piece, and the game_logic.rb where all the logic behind the game is defined including validating the player's input, moving board pieces into selected cells, switching player after the other has played, checking if the game is over and so much more.
 
-## Game Rules
-- This game requires 2 players.
-- It has a board with a grid of 3X3 having 9 cells.
-- To play the game, run main.rb file.
+## Game Instructions
+- The Tic Tac Toe game requires 2 players.
+- It provides a board with a 3x3 grid having 9 cells.
+- To play the game, open your Linux terminal and navigate to bin folder in the game directory.
+- Type ./main.rb and hit "Enter" to run the game.
 - It will display a fresh board marked with numbers 1 - 9.
-- It prompts the first player for a name and a piece to play with.
+- It prompts the first player for a name with supported format.
+- Type your name with the given format and hit "Enter"
+- It also prompts the first player for a symbol with supported format.
+- Type your symbol with the given format and hit "Enter"
 - Same goes for the second player. We customize your piece for any letter a player may prefer.
-- Play the game.
+- Play the game according the the prompts.
 - The winner is the first player who succeeds in playing their piece in a horizontal, vertical or diagonal row all aligned.
-- The game will draw if no winning combination is found.
-- You can replay the game by running main.rb in the lib folder.
+- The game ends in a tie (draw) if the board is filled and no winning combination is found.
+- You can replay the game by running ./main.rb in the bin folder again.
 
 ## Project Screenshots here:
 ![screenshot](capture.png)
 
 ### Built With
 Technologies used during development of this project
-- Ruby: as the main programming language
-- VScode: as the editor
-
-## Development
-To contribute to the game development clone or fork this project.
+- Ruby Language
 
 ## Authors
 
