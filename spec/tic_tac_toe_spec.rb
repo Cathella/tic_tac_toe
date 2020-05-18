@@ -55,4 +55,16 @@ require_relative '../lib/game_logic.rb'
       expect(board.win?(X)).to eq(true)
     end
   end
+
+  describe '#filled?' do
+    it "it should return 'true' if all cells are 'X' and 'O'" do
+      board.display = [X, O, X, X, O, O, O, X, X]
+      expect(board.filled?).to eq(true)
+    end
+
+    it "it should return 'false' if all cells are not only 'X' and 'O'" do
+      board.display = [X, O, X, 4, O, O, O, X, X]
+      expect(board.filled?).to eq(false)
+    end
+  end
  end
