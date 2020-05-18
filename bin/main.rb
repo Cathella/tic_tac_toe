@@ -27,7 +27,7 @@ end
 
 def get_player_name(game)
   loop do
-    print "#{game.current_player.name} enter your name as a text without a space or symbol: "
+    print "#{game.current_player.name} (#{game.current_player.piece}) enter your name as a text without a space or symbol: "
     name = gets.chomp
     if !(name =~ /^[0-9a-zA-Z]{1,10}$/).nil?
       game.current_player.name = name.capitalize

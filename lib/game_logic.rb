@@ -7,8 +7,8 @@ class TicTacToeGame
 
   def initialize
     @board = Board.new
-    @player_a = Player.new(board: @board, name: "Player A", piece: :X)
-    @player_b = Player.new(board: @board, name: "Player B", piece: :O)
+    @player_a = Player.new(board: @board, name: "Player A", piece: 'X')
+    @player_b = Player.new(board: @board, name: "Player B", piece: 'O')
     @current_player = @player_a
   end
 
