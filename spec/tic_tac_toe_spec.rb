@@ -2,7 +2,7 @@ require_relative '../lib/player.rb'
 require_relative '../lib/board.rb'
 require_relative '../lib/game_logic.rb'
 
- describe Board do
+describe Board do
   let (:board) { Board.new }
   X = 'X'
   O = 'O'
@@ -67,4 +67,38 @@ require_relative '../lib/game_logic.rb'
       expect(board.filled?).to eq(false)
     end
   end
- end
+end
+
+describe TicTacToeGame do
+  let (:board) { Board.new }
+  let (:game) { TicTacToeGame.new }
+  let (:p1) { Player.new(board: board, name: "Player A", piece: 'X') }
+  let (:p2) { Player.new(board: board, name: "Player B", piece: 'O') }
+  let (:current_player) {p1}
+
+  describe '#validate_coordinate' do
+  
+    it "returns 'true' when arg is in the range 1 to 9" do
+      expect(game.validate_coordinate(4)).to eq(true)
+    end
+
+    it "returns 1 when arg is not in the range 1 to 9" do
+      expect(game.validate_coordinate(10)).to eq(1)
+    end
+
+    it "returns true when the chosen cell is free" do
+      game.board.display[0] = X
+      expect(game.board.empty?(3)).to eq(true)
+    end
+
+    it "returns 'false' when the chosen cell is not free" do
+      game.board.display[0] = X
+      expect(game.board.empty?(1)).to eq(false)
+    end
+
+    it "returns 'true' when the chosen cell is vald and free" do
+      game.board.display[3] = X
+      expect(game.board.empty?(1)).to eq(true)
+    end
+  end
+end
