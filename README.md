@@ -1,7 +1,7 @@
 # TicTacToe Implementation in Ruby
 
 ## About the Project
-This project is a commandline implementation of the famous TicTacToe game, in Ruby.
+This project is a commandline implementation of the famous TicTacToe game, in Ruby. iIn this milestone, RSpec testing has been added to the project, and the file 'tic_tac_toe_spec.rb' in the 'spec' folder is responsible for running the test cases.
 
 > The project's requirements can be found here: [OOP (Object Oriented Programming)](https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/59565018/)
 
