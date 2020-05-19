@@ -12,6 +12,11 @@ describe Board do
       board.display = [1, X, 3, 4, 5, X, O, 8, 9]
       expect(board.empty?(3)).to eq(true)
     end
+
+    it "doesn't return 'true' when the chosen cell is not free" do
+      board.display[0] = X
+      expect(board.empty?(1)).not_to eq(true)
+    end
   end
 
   describe '#win?' do
@@ -20,9 +25,19 @@ describe Board do
       expect(board.win?(X)).to eq(true)
     end
 
-    it "it should return 'true' if the second row are all 'X'" do
+    it "it should not return 'true' if the first row are not all 'X' or 'O'" do
+      board.display = [X, O, X, 4, 5, 6, 7, 8, 9]
+      expect(board.win?(X)).not_to eq(true)
+    end
+
+    it "it should return 'true' if the second row are all 'X' or 'O'" do
       board.display = [1, O, 3, X, X, X, O, 8, 9]
       expect(board.win?(X)).to eq(true)
+    end
+
+    it "it should not return 'true' if the second row are not all 'X' or 'O'" do
+      board.display = [1, O, 3, X, O, X, O, 8, 9]
+      expect(board.win?(X)).not_to eq(true)
     end
 
     it "it should return 'true' if the third row are all 'X'" do
@@ -30,9 +45,19 @@ describe Board do
       expect(board.win?(X)).to eq(true)
     end
 
+    it "it should not return 'true' if the third row are not all 'X'" do
+      board.display = [1, 2, 3, 4, 5, 6, X, X, 9]
+      expect(board.win?(X)).not_to eq(true)
+    end
+
     it "it should return 'true' if the first column are all 'X' or 'O'" do
       board.display = [O, 2, 3, O, 5, 6, O, 8, 9]
       expect(board.win?(O)).to eq(true)
+    end
+    
+    it "it should not return 'true' if the first column are not all 'X' or 'O'" do
+      board.display = [1, 2, 3, O, 5, 6, O, 8, 9]
+      expect(board.win?(O)).not_to eq(true)
     end
 
     it "it should return 'true' if the second column are all 'X' or 'O'" do
@@ -40,9 +65,19 @@ describe Board do
       expect(board.win?(O)).to eq(true)
     end
 
+    it "it should return 'true' if the second column are not all 'X' or 'O'" do
+      board.display = [1, 2, 3, 4, O, 6, 7, O, 9]
+      expect(board.win?(O)).not_to eq(true)
+    end
+
     it "it should return 'true' if the third column are all 'X' or 'O'" do
       board.display = [1, 2, O, 4, 5, O, 7, 8, O]
       expect(board.win?(O)).to eq(true)
+    end
+
+    it "it should not return 'true' if the third column are not all 'X' or 'O'" do
+      board.display = [1, 2, O, 4, 5, O, 7, 8, 9]
+      expect(board.win?(O)).not_to eq(true)
     end
 
     it "it should return 'true' if any of the diagonals are all 'X' or 'O'" do
@@ -50,9 +85,19 @@ describe Board do
       expect(board.win?(O)).to eq(true)
     end
 
+    it "it should return 'true' if any of the diagonals are not all 'X' or 'O'" do
+      board.display = [1, 2, 3, 4, O, 6, 7, 8, O]
+      expect(board.win?(O)).not_to eq(true)
+    end
+
     it "it should return 'true' if any of the diagonals are all 'X' or 'O'" do
       board.display = [1, 2, X, 4, X, 6, X, 8, 9]
       expect(board.win?(X)).to eq(true)
+    end
+
+    it "it should not return 'true' if any of the diagonals are not all 'X' or 'O'" do
+      board.display = [1, 2, 3, 4, X, 6, X, 8, 9]
+      expect(board.win?(X)).not_to eq(true)
     end
   end
 
@@ -62,9 +107,9 @@ describe Board do
       expect(board.filled?).to eq(true)
     end
 
-    it "it should return 'false' if all cells are not only 'X' and 'O'" do
+    it "it should not return 'true' if all cells are not only 'X' and 'O'" do
       board.display = [X, O, X, 4, O, O, O, X, X]
-      expect(board.filled?).to eq(false)
+      expect(board.filled?).not_to eq(true)
     end
   end
 end
