@@ -1,7 +1,7 @@
 # TicTacToe Implementation in Ruby
 
 ## About the Project
-This project is a commandline implementation of the famous TicTacToe game, in Ruby. iIn this milestone, RSpec testing has been added to the project, and the file 'tic_tac_toe_spec.rb' in the 'spec' folder is responsible for running the test cases.
+This project is a commandline implementation of the famous TicTacToe game, in Ruby.
 
 > The project's requirements can be found here: [OOP (Object Oriented Programming)](https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/59565018/)
 
@@ -27,6 +27,14 @@ This project is a commandline implementation of the famous TicTacToe game, in Ru
 - The winner is the first player who succeeds in playing their piece in a horizontal, vertical or diagonal row all aligned.
 - The game ends in a tie (draw) if the board is filled and no winning combination is found.
 - You can replay the game by running ./main.rb in the bin folder again.
+
+## Automated Test Case
+- Test automation provided for this project is based on RSpec tool. The test cases are found in the 'tic_tac_toe_spec.rb' file which resides in 'spec' folder, a sub folder in the project directory.
+- To run the test cases, open your terminal and navigate to the aboved mentioned directory.
+- ToRun the 'tic_tac_toe_spec.rb' file by typing the following:
+- rspec tic_tac_toe_spec.rb
+- Hit 'Enter' key on the keyboard
+- When the available test cases are evaluated, corresponding messages are retured.
 
 ## Project Screenshots here:
 ![screenshot](capture.png)
