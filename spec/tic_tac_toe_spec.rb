@@ -54,7 +54,7 @@ describe Board do
       board.display = [O, 2, 3, O, 5, 6, O, 8, 9]
       expect(board.win?(O)).to eq(true)
     end
-    
+
     it "it should not return 'true' if the first column are not all 'X' or 'O'" do
       board.display = [1, 2, 3, O, 5, 6, O, 8, 9]
       expect(board.win?(O)).not_to eq(true)
